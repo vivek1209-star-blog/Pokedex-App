@@ -1,19 +1,16 @@
-import React from 'react'
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
-import { NavBar } from './Component/NavBar';
-import Pokedex from './Container/Pokedex'
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import { Pokedex } from '../src/Container/Pokedex'
+import { PokemonCard } from "./Container/PokemonCard";
+const App = () => (
+  <Switch>
+    <Route exact path="/" render={(props) => <Pokedex {...props} />} />
+    <Route
+      exact
+      path="/:pokemonId"
+      render={(props) => <PokemonCard {...props} />}
+    />
+  </Switch>
+);
 
-export default function App() {
-  return (
-    <BrowserRouter>
-      <NavBar />
-      <Routes >
-        <Route path='/' element={<Pokedex />} />
-      </Routes>
-    </BrowserRouter>
-  )
-}
+export default App;
